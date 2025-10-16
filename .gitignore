@@ -1,0 +1,50 @@
+# .NET build folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+
+# Visual Studio folders
+.vs/
+.vscode/
+
+# Database and temp files
+*.db-shm
+*.db-wal
+*.db
+*.pdb
+
+# Executables
+*.exe
+*.dll
+
+# Project-specific
+*.pgerd
+*.backup.json
+
+# JSON file changes (optional)
+!DocumentLayout.json
+
+# ReSharper / Rider
+.idea/
+*.sln.iml
+
+# Logs
+*.log
+
+# Others
+*.cache
+*.tmp
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+
+# API Keys and Secrets
+appsettings.Development.json
+run.md
