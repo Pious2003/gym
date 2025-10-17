@@ -1,0 +1,34 @@
+{
+  "name": "gym_fe",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@mui/material-nextjs": "^7.2.0",
+    "@stripe/stripe-js": "^7.6.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.525.0",
+    "next": "^15.5.2",
+    "react": "^19.0.0",
+    "react-chatbot-kit": "^2.2.2",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.6.3",
+    "tailwind-merge": "^3.3.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

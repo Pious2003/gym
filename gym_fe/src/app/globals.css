@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Fix react-chatbot-kit width to fit modal */
+.react-chatbot-kit-chat-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  overflow: hidden !important;
+}
+.react-chatbot-kit-chat-inner-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  overflow: hidden !important;
+}
+.react-chatbot-kit-chat-message-container {
+  max-width: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.react-chatbot-kit-chat-input-container {
+  background-color: white;
+}
+
+.react-chatbot-kit-chat-input-container input{
+  border: 1px solid #e0e0e0;
+  outline: none;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+/* Fix input + button submit luôn nằm 1 dòng, không tràn */
+.react-chatbot-kit-user-chat-message-input-container {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  box-sizing: border-box;
+  gap: 0 !important;
+}
+
+.react-chatbot-kit-user-chat-message-input {
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.react-chatbot-kit-user-chat-message-input:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.react-chatbot-kit-user-chat-message-submit {
+  flex-shrink: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* User message: align right, avatar phải, bubble phải */
+.react-chatbot-kit-user-chat-message {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: flex-end !important;
+  align-items: flex-end !important;
+  width: 100% !important;
+}
+
+.react-chatbot-kit-user-chat-message .react-chatbot-kit-user-chat-message-container {
+  background: #2563eb !important;
+  color: #fff !important;
+  border-radius: 12px 12px 0 12px !important;
+  margin-right: 8px !important;
+  margin-left: 40px !important;
+  text-align: right !important;
+  align-self: flex-end !important;
+  max-width: 70% !important;
+}
+
+.react-chatbot-kit-user-chat-message-icon {
+  order: 2 !important;
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+  align-self: flex-end !important;
+}
+
+/* Bot message: align left, avatar trái, bubble trái */
+.react-chatbot-kit-chat-bot-message {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+}
+
+.react-chatbot-kit-chat-bot-message .react-chatbot-kit-chat-bot-message-container {
+  background: #10b981 !important;
+  color: #fff !important;
+  border-radius: 12px 12px 12px 0 !important;
+  margin-left: 8px !important;
+  margin-right: 40px !important;
+  text-align: left !important;
+  align-self: flex-start !important;
+  max-width: 70% !important;
+}
+
+.react-chatbot-kit-chat-bot-avatar {
+  order: 0 !important;
+  margin-right: 8px !important;
+  margin-left: 0 !important;
+  align-self: flex-start !important;
+}
+
