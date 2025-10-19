@@ -11,7 +11,7 @@ namespace gym_be.Models.DTOs
         public string PersonalTrainerName { get; set; } 
         public decimal Price { get; set; }
         public Guid ServiceId { get; set; }
-        public List<Guid> Schedules { get; set; } = new List<Guid>();
+        public List<string> Schedules { get; set; } = new List<string>();
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }

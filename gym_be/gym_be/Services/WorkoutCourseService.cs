@@ -66,7 +66,7 @@ namespace gym_be.Services
                 PersonalTrainerId = workoutCourseDto.PersonalTrainerId,
                 DurationWeek = workoutCourseDto.DurationWeek,
                 Description = workoutCourseDto.Description,
-                Schedules = workoutCourseDto.Schedules ?? new List<Guid>(),
+                Schedules = workoutCourseDto.Schedules ?? new List<string>(),
                 Price = workoutCourseDto.Price,
                 ServiceId = workoutCourseDto.ServiceId, // map serviceid
                 StartDate = workoutCourseDto.StartDate,
@@ -85,7 +85,7 @@ namespace gym_be.Services
                 workoutCourse.PersonalTrainerId = workoutCourseDto.PersonalTrainerId;
                 workoutCourse.DurationWeek = workoutCourseDto.DurationWeek;
                 workoutCourse.Description = workoutCourseDto.Description;
-                workoutCourse.Schedules = workoutCourseDto.Schedules ?? new List<Guid>();
+                workoutCourse.Schedules = workoutCourseDto.Schedules ?? new List<string>();
                 workoutCourse.Price = workoutCourseDto.Price;
                 workoutCourse.ServiceId = workoutCourseDto.ServiceId; // map serviceid
                 workoutCourse.StartDate = workoutCourseDto.StartDate;

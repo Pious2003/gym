@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Stripe;
 using Stripe.Checkout;
 using Newtonsoft.Json;
@@ -144,58 +145,30 @@ namespace gym_be.Services
                 .Distinct()
                 .ToList();
 
-            // Lấy tất cả WorkoutCourse liên quan
+            // Lấy tất cả WorkoutCourse liên quan với Personal Trainer info
             var courses = _context.WorkoutCourses
                 .Where(c => courseIds.Contains(c.CourseId))
-                .AsEnumerable()
+                .Include(c => c.PersonalTrainer)
                 .ToList();
 
-            // Tạo ánh xạ scheduleid -> (PersonalTrainerId, CourseId)
-            var scheduleCourseMap = new Dictionary<Guid, (Guid PersonalTrainerId, Guid CourseId)>();
+            // Tạo danh sách schedule từ course schedules (string format)
+            var scheduleList = new List<object>();
             foreach (var course in courses)
             {
-                foreach (var scheduleid in course.Schedules)
+                foreach (var scheduleString in course.Schedules)
                 {
-                    scheduleCourseMap[scheduleid] = (course.PersonalTrainerId, course.CourseId);
+                    scheduleList.Add(new
+                    {
+                        CourseId = course.CourseId,
+                        CourseName = course.CourseName,
+                        ScheduleTime = scheduleString,
+                        PersonalTrainerName = course.PersonalTrainer?.Name,
+                        PersonalTrainerId = course.PersonalTrainerId
+                    });
                 }
             }
 
-            // Lấy tất cả scheduleid
-            var scheduleids = scheduleCourseMap.Keys.ToList();
-
-            // Lấy thông tin chi tiết các schedule
-            var schedules = _context.Schedules
-                .Where(s => scheduleids.Contains(s.scheduleid))
-                .ToList();
-
-            // Lấy danh sách giáo viên
-            var trainerIds = scheduleCourseMap.Values.Select(x => x.PersonalTrainerId).Distinct().ToList();
-            var trainers = _context.Customers
-                .Where(c => trainerIds.Contains(c.CustomerID))
-                .ToDictionary(c => c.CustomerID, c => c.Name);
-
-            // Trả về schedule kèm tên giáo viên và tên khoá học
-            var result = courses.Select(c => new {
-                teacherName = trainers.ContainsKey(c.PersonalTrainerId)
-                    ? trainers[c.PersonalTrainerId]
-                    : "Không rõ",
-                courseId = c.CourseId,
-                courseName = c.CourseName,
-                courseStartDate = c.StartDate,
-                courseEndDate = c.EndDate,
-                duration = c.DurationWeek,
-                schedules = schedules
-                    .Where(s => c.Schedules.Contains(s.scheduleid))
-                    .Select(s => new {
-                        scheduleid = s.scheduleid,
-                        dayOfWeek = s.DayOfWeek,
-                        startTime = s.StartTime,
-                        endTime = s.EndTime
-                    })
-                    .ToList()
-            }).ToList();
-
-            return result;
+            return scheduleList;
         }
 
         public async Task<IEnumerable<object>> GetPaymentHistoryAsync(Guid customerId)

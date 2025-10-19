@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['source.unsplash.com'],
   },
+  // Disable development indicator
+  devIndicators: {
+    buildActivity: false,
+    buildActivityPosition: 'bottom-right',
+  },
 };
 
 export default nextConfig;

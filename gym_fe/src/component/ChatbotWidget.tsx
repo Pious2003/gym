@@ -16,18 +16,21 @@ import MessageParser from '../app/user/MessageParser';
 const ChatbotWidget = () => {
     const [showChatbot, setShowChatbot] = React.useState(false);
 
+    React.useEffect(() => {
+        const handleOpenChatbot = () => {
+            setShowChatbot(true);
+        };
+
+        window.addEventListener('openChatbot', handleOpenChatbot);
+        
+        return () => {
+            window.removeEventListener('openChatbot', handleOpenChatbot);
+        };
+    }, []);
+
     return (
         <>
-            {/* Floating Chatbot Button */}
-            <div className="fixed bottom-6 right-6 z-50">
-                <button
-                    onClick={() => setShowChatbot(true)}
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg w-16 h-16 flex items-center justify-center text-3xl focus:outline-none focus:ring-2 focus:ring-emerald-400"
-                    aria-label="Open chat bot"
-                >
-                    <MessageCircle className="w-9 h-9" />
-                </button>
-            </div>
+            {/* Floating Chatbot Button - Completely removed, controlled externally */}
             {/* Chatbot Modal */}
             {showChatbot && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center">

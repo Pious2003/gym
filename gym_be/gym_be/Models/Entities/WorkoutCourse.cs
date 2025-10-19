@@ -33,7 +33,7 @@ public class WorkoutCourse
     
     public Customer PersonalTrainer { get; set; } 
     [Column("schedules", TypeName = "jsonb")]
-    public List<Guid> Schedules { get; set; } = new List<Guid>();
+    public List<string> Schedules { get; set; } = new List<string>();
 
     [Column("serviceid")]
     public Guid ServiceId { get; set; }

@@ -18,6 +18,7 @@ import Chatbot from "react-chatbot-kit";
 import AuthService from "@/service/authService";
 import PaymentService, { ScheduleResponse } from "@/service/paymentService";
 import AppointmentService from "@/service/appointmentService";
+import QuickActionButtons from "@/component/QuickActionButtons";
 
 import ActionProvider from "./ActionProvider";
 import config from "./config";
@@ -466,6 +467,9 @@ export default function UserDashboard() {
           </button>
         </div>
       </div>
+      
+      {/* Quick Action Buttons */}
+      <QuickActionButtons />
     </div>
   );
 }

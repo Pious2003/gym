@@ -18,6 +18,7 @@ import {
   LoaderPinwheel,
 } from "lucide-react";
 import AuthService from "@/service/authService";
+import QuickActionButtons from "@/component/QuickActionButtons";
 import {
   format,
   isAfter,
@@ -686,6 +687,9 @@ export default function SchedulePage() {
           </div>
         </div>
       )}
+      
+      {/* Quick Action Buttons */}
+      <QuickActionButtons />
     </div>
   );
 }

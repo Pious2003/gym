@@ -140,6 +140,12 @@ export default function BuyCoursePage() {
 
   // Hàm xử lý thêm vào giỏ hàng và toast
   const handleAddToCart = (course: any) => {
+    // Check if user is logged in
+    if (!user) {
+      router.push('/auth/login');
+      return;
+    }
+
     const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const idx = cartItems.findIndex(
       (item: any) => item.id === (course.courseid || course.id)
@@ -168,6 +174,12 @@ export default function BuyCoursePage() {
 
   // Hàm xử lý khi nhấn "Mua ngay" - luôn thêm vào giỏ và chuyển trang cart ngay lập tức
   const handleBuyNow = (course: any) => {
+    // Check if user is logged in
+    if (!user) {
+      router.push('/auth/login');
+      return;
+    }
+
     const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const idx = cartItems.findIndex(
       (item: any) => item.id === (course.courseid || course.id)
@@ -197,6 +209,31 @@ export default function BuyCoursePage() {
           Tìm kiếm khóa tập phù hợp với mục tiêu và trình độ của bạn
         </p>
       </div>
+
+      {/* Login prompt for non-authenticated users */}
+      {!user && (
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <Info className="w-5 h-5 text-amber-600" />
+              <div>
+                <p className="text-amber-800 font-medium">
+                  Đăng nhập để mua khóa tập
+                </p>
+                <p className="text-amber-600 text-sm">
+                  Bạn có thể xem các khóa tập, nhưng cần đăng nhập để thêm vào giỏ hàng hoặc mua ngay.
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => router.push('/auth/login')}
+              className="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium"
+            >
+              Đăng nhập
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Filters and Search */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
@@ -380,18 +417,28 @@ export default function BuyCoursePage() {
 
                   <div className="flex space-x-2">
                     <button
-                      className="flex-1 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white py-3 rounded-lg font-medium hover:from-emerald-700 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center group"
+                      className={`flex-1 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center group ${
+                        user 
+                          ? "bg-gradient-to-r from-emerald-600 to-emerald-500 text-white hover:from-emerald-700 hover:to-emerald-600" 
+                          : "bg-gray-400 text-white cursor-not-allowed"
+                      }`}
                       onClick={() => handleBuyNow(course)}
+                      disabled={!user}
                     >
                       <ShoppingCart className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                      Mua ngay
+                      {user ? "Mua ngay" : "Đăng nhập để mua"}
                     </button>
                     <button
-                      className="flex-1 bg-white border border-emerald-500 text-emerald-600 py-3 rounded-lg font-medium hover:bg-emerald-50 transition-all duration-200 flex items-center justify-center group"
+                      className={`flex-1 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center group ${
+                        user
+                          ? "bg-white border border-emerald-500 text-emerald-600 hover:bg-emerald-50"
+                          : "bg-gray-100 border border-gray-300 text-gray-500 cursor-not-allowed"
+                      }`}
                       onClick={() => handleAddToCart(course)}
+                      disabled={!user}
                     >
-                      <Plus className="w-5 h-5 mr-2 text-emerald-600 group-hover:scale-110 transition-transform" />
-                      Thêm vào giỏ
+                      <Plus className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                      {user ? "Thêm vào giỏ" : "Đăng nhập để thêm"}
                     </button>
                   </div>
                 </div>
