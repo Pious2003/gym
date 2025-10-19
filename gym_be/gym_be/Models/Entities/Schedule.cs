@@ -17,12 +17,10 @@ namespace gym_be.Models.Entities
         public int MaxParticipants { get; set; }
 
         [Column("starttime")]
-        [MaxLength(5)]
-        public string StartTime { get; set; }  
+        public DateTime StartTime { get; set; }  
 
         [Column("endtime")]
-        [MaxLength(5)]
-        public string EndTime { get; set; }    
+        public DateTime EndTime { get; set; }    
 
         public ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
     }

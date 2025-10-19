@@ -112,7 +112,7 @@ CREATE DATABASE gymdb;
 
 ```bash
 # Navigate to backend directory
-cd gym_be
+cd gym_be/gym_be
 
 # Restore dependencies
 dotnet restore

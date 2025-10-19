@@ -18,6 +18,8 @@ import {
   Target,
   Activity
 } from 'lucide-react';
+import { useUser } from '../../context/UserContext';
+import QuickActionButtons from '@/component/QuickActionButtons';
 import AuthService from '@/service/authService';
 import customerService from '@/service/customerService';
 import { toast } from '@/hooks/use-toast';
@@ -409,6 +411,9 @@ export default function ProfilePage() {
           )}
         </div>
       </div>
+      
+      {/* Quick Action Buttons */}
+      <QuickActionButtons />
     </div>
   );
 }

@@ -53,7 +53,8 @@ namespace gym_be.Services.Implementations
             var total = await query.CountAsync();
 
             var data = await query
-                .OrderBy(s => s.StartTime)
+                .OrderBy(s => s.DayOfWeek)
+                .ThenBy(s => s.StartTime)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
@@ -67,7 +68,7 @@ namespace gym_be.Services.Implementations
                 .Select(s => new ScheduleOptionDto
                 {
                     Value = s.scheduleid,
-                    Label = $"{s.DayOfWeek} | {s.StartTime} - {s.EndTime}"
+                    Label = $"{s.DayOfWeek} | {s.StartTime:HH:mm} - {s.EndTime:HH:mm}"
                 })
                 .ToListAsync();
         }

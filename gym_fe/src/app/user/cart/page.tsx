@@ -14,6 +14,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useRouter, useSearchParams } from "next/navigation";
 import AuthService from "@/service/authService";
 import PaymentService from "@/service/paymentService";
+import QuickActionButtons from "@/component/QuickActionButtons";
 
 const stripePromise = loadStripe("");
 
@@ -247,6 +248,9 @@ export default function CartPage() {
           </button>
         </div>
       )}
+      
+      {/* Quick Action Buttons */}
+      <QuickActionButtons />
     </div>
   );
 }
