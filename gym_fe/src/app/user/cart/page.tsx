@@ -16,7 +16,7 @@ import AuthService from "@/service/authService";
 import PaymentService from "@/service/paymentService";
 import QuickActionButtons from "@/component/QuickActionButtons";
 
-const stripePromise = loadStripe("");
+const stripePromise = loadStripe("pk_test_51M0Yw8K0g0g0g0g0g0g0g0g0g0g0g0g0g0g0g0g0");
 
 interface CartItem {
   id: string;

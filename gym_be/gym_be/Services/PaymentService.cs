@@ -23,7 +23,7 @@ namespace gym_be.Services
 
         public async Task<object> CreateCheckoutSessionAsync(CheckoutSessionRequest request)
         {
-            StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("");
+           StripeConfiguration.ApiKey = "sk_test_51Rom2g3PJbTWL2KKBiJZVnavBq2U1V1p7xrBWn1WI0Y5UM8xQ56LNXMmWMiY6AQMMk3vmXmdpinjVMQwYC20Logd00LGhiefLH";
 
             var origin = request.Origin;
             var successUrl = $"{origin}/user/cart?success=true";

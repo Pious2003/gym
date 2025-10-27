@@ -280,7 +280,7 @@ function calcEndDate(startDate: Date, durationweek: string): Date {
               placeholder="Enter course name..."
               className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${errors.coursename ? 'border-red-500' : 'border-gray-300'
                 } ${initialData ? 'bg-gray-100 cursor-not-allowed' : ''}`}
-              disabled={!!initialData}
+             
             />
             {errors.coursename && (
               <p className="text-red-500 text-sm mt-1">{errors.coursename}</p>
@@ -301,7 +301,7 @@ function calcEndDate(startDate: Date, durationweek: string): Date {
               placeholder="https://example.com/image.jpg"
               className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${errors.imageurl ? 'border-red-500' : 'border-gray-300'
                 } ${initialData ? 'bg-gray-100 cursor-not-allowed' : ''}`}
-              disabled={!!initialData}
+           
             />
             {errors.imageurl && (
               <p className="text-red-500 text-sm mt-1">{errors.imageurl}</p>
@@ -359,7 +359,7 @@ function calcEndDate(startDate: Date, durationweek: string): Date {
               max="52"
               className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${errors.durationweek ? 'border-red-500' : 'border-gray-300'
                 } ${initialData ? 'bg-gray-100 cursor-not-allowed' : ''}`}
-              disabled={!!initialData}
+             
             />
             {errors.durationweek && (
               <p className="text-red-500 text-sm mt-1">{errors.durationweek}</p>
@@ -378,7 +378,7 @@ function calcEndDate(startDate: Date, durationweek: string): Date {
               min={0}
               step={1000}
               placeholder="Nhập giá khóa học (VND)"
-              disabled={!!initialData}
+          
             />
           </div>
 
@@ -396,7 +396,7 @@ function calcEndDate(startDate: Date, durationweek: string): Date {
               rows={4}
               className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none ${errors.description ? 'border-red-500' : 'border-gray-300'
                 } ${initialData ? 'bg-gray-100 cursor-not-allowed' : ''}`}
-              disabled={!!initialData}
+             
             />
             <div className="flex justify-between items-center mt-1">
               {errors.description && (
@@ -450,7 +450,7 @@ function calcEndDate(startDate: Date, durationweek: string): Date {
               value={formData.serviceid}
               onChange={handleInputChange}
               className="text-black w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all appearance-none bg-white"
-              disabled={!!initialData}
+        
             >
               <option value="">Select a service...</option>
               {services.map(service => (
@@ -477,7 +477,7 @@ function calcEndDate(startDate: Date, durationweek: string): Date {
                       type="checkbox"
                       value={id}
                       checked={formData.schedules.includes(id)}
-                      disabled={!!initialData}
+                   
                       onChange={e => {
                         const checked = e.target.checked;
 

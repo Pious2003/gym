@@ -17,8 +17,19 @@ namespace gym_be.Controllers
         [HttpPost("create-checkout-session")]
         public async Task<IActionResult> CreateCheckoutSession([FromBody] CheckoutSessionRequest request)
         {
-            var result = await _paymentService.CreateCheckoutSessionAsync(request);
-            return Ok(result);
+            try
+            {
+                var result = await _paymentService.CreateCheckoutSessionAsync(request);
+                return Ok(result);
+            }
+            catch (Stripe.StripeException ex)
+            {
+                return StatusCode(400, new { message = ex.StripeError?.Message ?? ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.Message });
+            }
         }
 
         [HttpPost("save")]

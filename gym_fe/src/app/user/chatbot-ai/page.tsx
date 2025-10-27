@@ -64,7 +64,7 @@ function ChatBotAI() {
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                    model: 'command-r-plus',
+                 model: 'command-r-plus-08-2024',
                     message: message,
                     preamble: 'You are a helpful AI assistant for a gym booking system. Answer questions about fitness, gym services, appointments, and general health topics. Be friendly and engaging. Respond in Vietnamese when users speak Vietnamese.',
                     conversation_id: 'gym-booking-chat',
